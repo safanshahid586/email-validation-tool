@@ -11,10 +11,14 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Add 'backend' directory to sys.path for correct module resolution
+sys.path.insert(0, os.path.join(BASE_DIR, 'backend'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -35,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'backend.validator',  # Corrected the path for your validator app
+    'backend.validator',  # Path for the validator app
 ]
 
 MIDDLEWARE = [
@@ -54,7 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'backend' / 'validator' / 'templates'  # Use this directory for templates
+            BASE_DIR / 'backend' / 'validator' / 'templates'  # Template directory
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -109,12 +113,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Ensure you have a STATIC_ROOT for production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Static root for production
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Ensure that BASE_DIR is in sys.path for module resolution
-import sys
-sys.path.append(str(BASE_DIR))
