@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'validator',
+    'backend.validator',  # Ensure this is correct based on your updated folder structure
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

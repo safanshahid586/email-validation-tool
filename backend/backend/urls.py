@@ -3,5 +3,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('validator.urls')),  # Include the validator app URLs
+    path('', include('backend.validator.urls')),  # Include the validator app URLs
 ]
